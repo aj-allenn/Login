@@ -1,4 +1,37 @@
 [
-    {"name":"Allen John","email":"123@gmail.com","password":"asd123"},
-    {"name":"Allen John","email":"123@gmail.com","password":"asd123"}
+  {
+    "name": "kuuku",
+    "email": "123@gmail.com",
+    "password": "zxc"
+  },
+  {
+    "name": "teena",
+    "email": "123@gmail.com",
+    "password": "zxc"
+  },
+  {
+    "name": "kuuku",
+    "email": "as@gmail.com",
+    "password": "123fg"
+  },
+  {
+    "name": "teena",
+    "email": "we@gmail.com",
+    "password": "az12"
+  },
+  {
+    "name": "teena",
+    "email": "we@gmail.com",
+    "password": "cv"
+  },
+  {
+    "name": "teena",
+    "email": "we@gmail.com",
+    "password": "zx"
+  },
+  {
+    "name": "teena",
+    "email": "we@gmail.com",
+    "password": "xc"
+  }
 ]
