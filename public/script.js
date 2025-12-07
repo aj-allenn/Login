@@ -1,44 +1,33 @@
-const form = document.getElementById("signupForm");
+const list = document.getElementById('display');
 
-if (form) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirm = document.getElementById("confirm").value;
-
-    console.log(name, email, password);
-
-    const msg = document.getElementById("msg");
-
-    if (password !== confirm) {
-      msg.style.color = "red";
-      msg.innerText = "Passwords do not match";
-      return;
-    }
-
-    let formData = { name, email, password, confirm };
-
-    try {
-      const res = await fetch("/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.text();
-
-      msg.style.color = "green";
-      msg.innerHTML = data;
-
-      form.reset();
-    } catch (err) {
-      msg.style.color = "red";
-      msg.innerText = "Server Error";
-    }
-  });
+function fetchTodos() {
+    fetch("/api/todos")
+        .then(res => res.json())
+        .then(data => {
+            list.innerHTML = "";
+            data.forEach(todo => {
+                list.innerHTML += `
+                    <p>${todo.task}</p>
+                `;
+            });
+        });
 }
+
+function addTodo() {
+    const input = document.getElementById("todo-input");
+    const task = input.value.trim();
+
+    if (!task) return alert("Enter a task");
+
+    fetch("/api/todos", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ task })
+    })
+        .then(() => {
+            input.value = "";
+            fetchTodos();
+        });
+}
+
+fetchTodos();
